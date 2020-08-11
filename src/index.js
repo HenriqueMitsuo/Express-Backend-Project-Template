@@ -12,7 +12,7 @@ import colors from 'colors';
 
 const app = express();
 
-//* CONFING *//
+//* CONFIG *//
 app.disable('x-powered-by'); //? Disable default header
 
 app.use(cors()); //? CORS Enabled
@@ -24,7 +24,7 @@ app.use(xss()); //? Prevent Cross Site Scripting
 app.use(hpp()); //? Prevent HTTP param pollution
 
 app.use(morgan('dev')); //? Server Logger
-//* END CONFING *//
+//* END CONFIG *//
 
 //* ROUTES *//
 app.get('/api', (req, res) => {
