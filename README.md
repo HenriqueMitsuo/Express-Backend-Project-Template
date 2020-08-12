@@ -27,8 +27,14 @@ DB_PASS=
 # NOSQL DATABASE
 MONGO_DBURL=
 ```
+### Token testing routes
+- api/newtoken: Generates new token for testing
+- api/testguard: Tests the route guard
+  
 ---
 ### TODO:
+- ~~Add Auth Utils for JWT~~
+- ~~Add Guard Middleware to protect routes with JWT~~
 - Add branch with SequelizeORM
 - Add branch with MongooseODM
 - Add branch with TypeORM
