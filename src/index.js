@@ -10,6 +10,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import colors from 'colors';
 
+import { guard, newToken } from './utils/auth';
+
 const app = express();
 
 //* CONFIG *//
@@ -28,7 +30,16 @@ app.use(morgan('dev')); //? Server Logger
 
 //* ROUTES *//
 app.get('/api', (req, res) => {
-  res.send('API ROOT');
+  res.send('API ROOT ⚡️');
+});
+
+app.get('/api/newtoken', (req, res) => {
+  let token = newToken({ id: 100 });
+  res.send(token);
+});
+
+app.get('/api/testguard', guard, (req, res) => {
+  res.send('TOKEN VERIFYED 👍');
 });
 //* END ROUTES *//
 
