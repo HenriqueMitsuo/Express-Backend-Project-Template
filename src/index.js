@@ -12,6 +12,8 @@ import colors from 'colors';
 
 import { testConnection } from './utils/database';
 
+import userRouter from './resources/user/user.router';
+
 const app = express();
 
 //* CONFIG *//
@@ -32,6 +34,8 @@ app.use(morgan('dev')); //? Server Logger
 app.get('/api', (req, res) => {
   res.send('API ROOT ⚡️');
 });
+
+app.use('/api/user', userRouter);
 //* END ROUTES *//
 
 app.listen(config.port, () => {
