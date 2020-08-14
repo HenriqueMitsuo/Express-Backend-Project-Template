@@ -1,11 +1,18 @@
 import { sequelize } from '../../utils/database';
 import { DataTypes } from 'sequelize';
+import bcrypt from 'bcrypt';
 
 const User = sequelize.define('User', {
   name: DataTypes.STRING,
   age: DataTypes.INTEGER,
   email: DataTypes.STRING,
   password: DataTypes.STRING,
+});
+
+// Hooks
+User.addHook('beforeCreate', async function (user) {
+  const salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(user.password, salt);
 });
 
 // Instance Methods
