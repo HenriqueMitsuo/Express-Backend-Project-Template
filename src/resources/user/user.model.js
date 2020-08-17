@@ -17,7 +17,16 @@ User.addHook('beforeCreate', async function (user) {
 
 // Instance Methods
 User.prototype.test = function () {
-  return `Name: ${this.name}\nAge: ${this.age}\nEmail: ${this.email}`;
+  return `Name: ${this.name}\nAge: ${this.age}\nEmail: ${this.email}\nPassword: ${this.password}`;
+};
+
+User.prototype.checkPass = function (password) {
+  const hash = this.password;
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, hash, (err, result) => {
+      err ? reject(err) : resolve(result);
+    });
+  });
 };
 
 export default User;
